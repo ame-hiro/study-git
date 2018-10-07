@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <!-- CSS:Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-theme.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <header>
+        <h1>メニュー</h1>
+        <nav>
+            <ul class="nav nav-pills">
+                <li><a href="index.html">トップ</a></li>
+                <li><a href="js-trasition.html">古典</a></li>
+                <li><a href="js-moden.html">モダン</a></li>
+                <li><a href="js-index.html">JavaScript</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <section>
+            <h3>オブジェクト</h3>
+            <script type="text/javascript">
+                function p(){
+                    var a = 3;
+                    var b = a;
+                    a = 5;
+
+                    document.getElementById("p-a").innerHTML = a;
+                    document.getElementById("p-b").innerHTML = b;
+                }
+            </script>
+
+            <div id="p">プリミティブは実態に代入する</div>
+            <form name="form" action="#">
+                <input type="button" value="exec" onclick="p()">
+            </form>
+
+            a=
+            <div id="p-a"></div>
+            b=
+            <div id="p-b"></div>
+
+
+
+            <script type="text/javascript">
+                function o(){
+                    var a = {"aaa" : 10};
+                    var b = a;
+                    a.aaa = 5;
+                    document.getElementById("o-a").innerHTML = a.aaa;
+                    document.getElementById("o-b").innerHTML = b.aaa;
+                }
+            </script>
+
+            <div id="o">オブジェクトは値を参照する</div>
+            <form name="form" action="#">
+                <input type="button" value="exec" onclick="o()">
+            </form>
+
+            a=
+            <div id="o-a"></div>
+            b=
+            <div id="o-b"></div>
+
+            <!-- 関数式
+<script>
+var aaa = function (){
+    alert("test");
+};
+aaa();
+
+var a = {};
+    a.abc = function(){
+    alert("test");
+};
+a.abc();
+
+var a = {
+    abc : function(){ alert("abc"); },
+    aaa : function(){ alert("aaa"); }
+};
+a.abc();
+a.aaa();
+</script>
+-->
+
+            <!-- 無名関数
+<script>
+(function(){ alert("test"); })();
+</script>
+-->
+        </section>
+
+        <section>
+            <h3>DOM</h3>
+            <h4>木構造の操作</h4>
+            <p id="aaaaa">t<strong>es</strong>t</p>
+
+            <script type="text/javascript">
+                var a = document.getElementById('aaaaa');
+                console.log(a);
+                console.log(a.innerHTML);
+                console.log(a.parentNode);
+                console.log(a.childNodes);
+                
+                // node変更
+                a.childNodes.item(1).childNodes.item(0).nodeValue = "ES";
+                console.log(a.innerHTML);
+
+                // node削除
+                a.removeChild(a.childNodes.item(0));
+                a.removeChild(a.childNodes.item(0));
+                console.log(a.innerHTML);
+
+                // 要素書き換え
+                a.innerHTML = "<b>書き換えました</b>";
+                console.log(a.innerHTML);
+
+                // node追加
+                var newelement = document.createElement('p');
+                console.log(newelement);
+
+                var newtextnode = document.createTextNode("新しいテキストノード");
+                console.log(newtextnode);
+
+                newelement.appendChild(newtextnode);
+                document.body.appendChild(newelement);
+
+                var bodytag = document.getElementsByTagName('body');
+                console.log(bodytag.length);
+                console.log(bodytag.item(0).childNodes);
+
+                // nodeの前後
+                var aaaaa = document.getElementById('aaaaa');
+                var prev = aaaaa.previousSibling;
+                var next = aaaaa.nextSibling;
+                console.log("prev:",prev,",next:",next);             
+            </script>
+
+
+            <h4>テーブルの操作</h4>
+            <table id="bbbbb">
+                <tr>
+                    <td>test1</td>
+                    <td>test2</td>
+                </tr>
+                <tr>
+                    <td>test3</td>
+                    <td>test4</td>
+                </tr>
+            </table>
+
+            <script type="text/javascript">
+                var table = document.getElementById('bbbbb');
+                var collection = table.rows;
+                console.log(collection.item(0).tagName);
+
+                var tr = collection.item(0);
+                var td = tr.cells.item(0);
+                td.firstChild.nodeValue = "tttttttt";
+
+                var newtr = table.insertRow( table.rows.length );
+                for(var i=0;i<2;i++){
+                    var newtd = newtr.insertCell( newtr.cells.length );
+                    newtd.appendChild( document.createTextNode('testtest'+i) );
+                }
+
+               var thead = table.createTHead();
+               var tfoot = table.createTFoot();
+
+               var newtr1 = thead.insertRow(0);
+               for(var i=0;i<2;i++){
+                   var newtd1 = newtr1.insertCell( newtr1.cells.length );
+                   newtd1.appendChild( document.createTextNode('thead'+i) );
+               }
+
+               var newtr2 = tfoot.insertRow(0);
+               for(var i=0;i<2;i++){
+                   var newtd2 = newtr2.insertCell( newtr2.cells.length );
+                   newtd2.appendChild( document.createTextNode('tfoot'+i) );
+               }
+
+            </script>
+
+            <h4>属性</h4>
+            <p><img src="../r1201.gif" alt="before" id="ccccc"></p>
+
+            <script type="text/javascript">
+                var img = document.getElementById('ccccc');
+                console.log(img.getAttribute("alt"));
+                img.setAttribute("alt", "after");
+                console.log(img.getAttribute("alt"));
+            </script>
+
+            <h4>フォームの操作</h4>
+
+            <h4>null/undefined</h4>
+            
+        </section>
+
+    </div>
+
+</body>
+
+</html>

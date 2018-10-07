@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+
+<html>
+
+<head>
+    <title>フォーム（その他）</title>
+</head>
+
+<body>
+    <section>
+        <h1>output</h1>
+        <input type="number" id="num1" placeholder="数値1"> +
+        <input type="number" id="num2" placeholder="数値2"> =
+        <!-- for属性を用いて、num1とnum2から生成された値であることを明示 -->
+        <output for="num1 num2" id="result"></output>
+        <!-- output要素のvalueプロパティに値を指定すると、出力値を書き換えることができる -->
+        <button onclick="document.getElementById('result').value =
+                 parseInt(document.getElementById('num1').value, 10) +
+                 parseInt(document.getElementById('num2').value, 10)">
+  計算
+</button>
+    </section>
+
+    <section>
+        <h1>datalist</h1>
+        <!-- datalist要素のIDをlist属性に指定 -->
+        <input list="suggestions">
+        <!--
+  datalist要素を使用。不可視の要素だが、未対応ブラウザでは要素の
+  内容が表示されてしまうので、CSSで非表示にしている
+-->
+        <datalist id="suggestions" style="display: none;">
+            <option value="banana">バナナ</option>
+        </datalist>
+    </section>
+
+    <section>
+        <h1>progress</h1>
+        <progress>処理が進行中...</progress><br>
+        <progress value="50" max="100">50%</progress><br>
+        <br>
+
+        <progress></progress>
+        <span id="percentage"></span>
+        <script>
+  var progress = document.getElementsByTagName("progress")[0];
+  var percentage = document.getElementById("percentage");
+  
+  // 500～1000までの値を最大値とする
+  progress.max = Math.random() * 500 + 500;
+  progress.value = 0;
+ 
+  // 定期的に繰り返す
+  var timer = setInterval(function() {
+    // 100までの値をランダムで進捗率にプラスする
+    progress.value += Math.random() * 100;
+ 
+    // positionの値に100をかけるとパーセンテージが分かる
+    var percent = Math.floor(progress.position * 100);
+ 
+    // 進捗率がマックスに達したら繰り返し処理終了
+    if (progress.value >= progress.max) {
+      percent = 100; // 強制的に100%と表示する
+      clearInterval(timer);
+    }
+    // プログレスバーの横にパーセント表示
+    // progress要素の中身も同時に更新する
+    percentage.textContent = progress.textContent = percent + "%";
+  }, 500);
+</script>
+    </section>
+
+    <section>
+        <h1>keygen</h1>
+        <form>
+            <keygen name="key" />
+            <button>送信</button>
+        </form>
+    </section>
+
+    <section>
+        <h1>others</h1>
+        <h2>画面ロード時のフォーカス要素を指定autofocus属性</h2>
+        <input type="text" name="name" autofocus>
+
+        <h2>＜form＞要素との入れ子から解き放つform属性</h2>
+        <label for="name">お名前:</label>
+        <!-- input要素がform01の外に出ている -->
+        <input name="name" id="name" form="form01">
+
+        <form id="form01">
+            <input type="submit" value="送信">
+        </form>
+
+        <h2>forminputイベントとformchangeイベント</h2>
+        document.forms[0].addEventListener("forminput", function() { // フォーム入力時の処理 }, false);
+
+    </section>
+</body>
+
+</html>

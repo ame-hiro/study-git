@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+
+<html>
+    <header>
+    <title>文章構造</title>
+    </header>
+    <body>
+
+        <div>
+<h1>1 HTML4の基礎知識</h1>
+<h2>1.1 HTML4の概要</h2>
+本文本文
+<h3>1.1.1 HTML4とは</h3>
+本文本文
+<h3>1.1.2 HTML4と関連API</h3>
+本文本文
+<h2>1.2 HTML4クイックスタート</h2>
+本文本文
+<h3>1.2.1 HTMLとXHTML</h3>
+本文本文
+</div>
+
+<!-- sectionは文章構造における見出し要素 -->
+<!--
+<article>
+<section>
+  <h1>1 HTML5の基礎知識</h1>
+  <section>
+    <h2>1.1 HTML5の概要</h2>
+    本文本文
+    <section>
+      <h3>1.1.1 HTML5とは</h3>
+      本文本文
+    </section>
+    <section>
+      <h3>1.1.2 HTML5と関連API</h3>
+      本文本文
+    </section>
+  </section>
+  <section>
+    <h2>1.2 HTML5クイックスタート</h2>
+    本文本文
+    <section>
+      <h3>1.2.1 HTMLとXHTML</h3>
+      本文本文
+    </section>
+  </section>
+    ...
+</section>
+</article>
+-->
+<article>
+  <!-- 暗黙的なセクションが作成されてしまい、意図したアウトラインと異なる -->
+  <!--
+  <h1>タイトル</h1> 
+  <h2>サブタイトル</h2>
+  本文本文
+  -->
+    <!-- 2つの見出し要素が、hgroupによって1つにまとめられる -->
+  <hgroup>
+    <h1>タイトル</h1>
+    <h2>サブタイトル</h2>
+  </hgroup>
+  本文本文
+</article>
+
+    <nav>
+      <h1>サイトナビゲーション</h1>
+      <ul>
+        <li><a href="index.html">トップ</a></li>
+        <li><a href="index.html">設定</a></li>
+        <li><a href="index.html">ヘルプ</a></li>
+        <li><a href="index.html">ログアウト</a></li>
+      </ul>
+    </nav>
+
+      <aside class="sidebar">
+    <h1>サイドバー</h1>
+    <section class="ads">
+      広告
+    </section>
+    <nav class="archives">
+      過去記事アーカイブ
+    </nav>
+  </aside>
+
+  </body>
+
+            <footer>
+    <address>問い合わせは<a href="mailto:user@example.com">名前</a>まで</address><br>
+  投稿日時:<time datetime="2010-12-24T12:00" pubdate>2010/12/24 12:00</time>
+  </footer>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+
+<html>
+
+<head>
+    <title>フォーム（バリデーション）</title>
+
+    <!-- CSSで色を変更できる -->
+    <style>
+        :valid,
+        :in-range {
+            background-color: lightgreen;
+        }
+        
+        :invalid {
+            background-color: pink;
+        }
+        
+        :out-of-range {
+            background-color: red;
+        }
+        
+        :required {
+            border-style: solid;
+        }
+        
+        :optional {
+            border-style: dashed;
+        }
+    </style>
+    入力必須:<input type="text" required><br> 入力必須じゃない:
+    <input type="text"><br> 10以下の数値:
+    <input type="number" min="10"><br>
+</head>
+
+<body>
+    <section>
+        <h1>validation</h1>
+
+        <section>
+            <h2>required</h2>
+            <form>
+                <label for="name">お名前:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="gender">性別:</label>
+                <select name="gender" required>
+    <option></option>
+    <option value="0">男性</option>
+    <option value="1">女性</option>
+  </select><br>
+                <input type="submit" value="送信">
+            </form>
+        </section>
+
+        <section>
+            <h2>pattern</h2>
+            <form>
+                <label for="zipCode">郵便番号:</label>
+                <input type="text" id="zipCode" name="zipCode" pattern="\d{3}-?\d{4}" placeholder="123-4567"><br>
+                <input type="submit" value="送信">
+            </form>
+        </section>
+
+        <section>
+            <h2>url</h2>
+            <!-- 日付や時刻、url、email、number、tel、range、color -->
+            <form>
+                <label for="url">URL:</label>
+                <input type="url" id="url" name="url">
+                <input type="submit" value="送信">
+            </form>
+        </section>
+
+        <section>
+            <h2>step</h2>
+            <form>
+                <label for="number">偶数を入力:</label>
+                <input type="number" id="number" name="number" step=2>
+                <input type="submit" value="送信">
+            </form>
+        </section>
+
+        <section>
+            <h2>min/max</h2>
+            <form>
+                <label for="date">日付を入力:</label>
+                <input type="date" id="date" name="date" min="2011-03-01" max="2011-03-31">
+                <input type="submit" value="送信">
+            </form>
+        </section>
+
+        <section>
+            <h2>maxlength</h2>
+            <form>
+                <label for="comment">コメントを入力（30文字以内）:</label><br>
+                <textarea name="comment" id="comment" maxlength="30"></textarea><br>
+                <input type="submit" value="送信">
+            </form>
+        </section>
+
+    </section>
+
+
+    <section>
+        <h1>JavaScript API</h1>
+        <style>
+            #errorMessage {
+                color: red;
+            }
+        </style>
+        <form>
+            <div id="errorMessage"></div>
+            <label for="name">お名前:</label>
+            <input name="name" id="name" required><br>
+            <label for="password">パスワード:</label>
+            <input type="password" name="password" id="password" required><br>
+            <label for="passwordConfirm">パスワード（確認）:</label>
+            <input type="password" name="passwordConfirm" id="passwordConfirm" required><br>
+            <input type="submit" value="送信">
+        </form>
+        <script>
+  var form = document.forms[0];
+  form.onsubmit = function() {
+    // エラーメッセージをクリアする
+    form.password.setCustomValidity("");
+    // パスワードの一致確認
+    if (form.password.value != form.passwordConfirm.value) {
+      // 一致していなかったら、エラーメッセージを表示する
+      form.password.setCustomValidity("パスワードと確認用パスワードが一致しません");
+    }
+  };
+  // 入力値チェックエラーが発生したときの処理
+  form.addEventListener("invalid", function() {
+    document.getElementById("errorMessage").innerHTML = "入力値にエラーがあります";
+  }, false);
+</script>
+    </section>
+
+
+    <section>
+        <h1>check off</h1>
+        <form>
+            <label for="name">お名前:</label>
+            <input name="name" id="name" required><br> ...
+            <input type="submit" value="送信">
+            <!-- 入力値チェックを行わずに、1つ前のページに戻る -->
+            <input type="submit" value="戻る" formaction="/back" formnovalidate>
+        </form>
+    </section>
+
+</body>
+
+</html>

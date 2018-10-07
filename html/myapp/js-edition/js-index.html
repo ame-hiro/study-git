@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <!-- CSS:Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap-theme.css" rel="stylesheet">
+</head>
+
+
+<body>
+    <header>
+        <h1>メニュー</h1>
+        <nav>
+            <ul class="nav nav-pills">
+                <li><a href="index.html">トップ</a></li>
+                <li><a href="js-trasition.html">古典</a></li>
+                <li><a href="js-moden.html">モダン</a></li>
+                <li><a href="js-index.html">JavaScript</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <section>
+            <h3>基礎1</h3>
+<!-- OFFにしておく          
+            <script>
+            a = 3;
+            if(a == 3){
+                alert("true");
+            }else{
+                alert("false");
+            }
+            </script>
+-->
+        </section>
+
+        <section>
+            <h3>基礎2</h3>
+<!-- OFFにしておく          
+            <script>
+        function aaa(b){
+            var a = "abc" //ローカル変数
+            alert("引数は" + a + b + "です");         
+        }
+        //aaa(5);
+        //aaa(3);
+        aaa("test");
+
+        function sum(a,b){
+            return a+b;
+        }
+        alert( sum(100,10));
+            </script>
+-->
+        </section>
+
+        <section>
+            <h3>基礎3</h3>
+            <script type="text/javascript">
+            function ccc(){
+                alert('click');
+            }
+        </script>
+            <form action="#">
+                <input type=button value="onclick" onclick="ccc()">
+            </form>
+        </section>
+
+        <section>
+            <h3>基礎4</h3>
+            <script type="text/javascript">
+            function bbb(){
+                var members = ["鳩山由紀夫", "麻生太郎", "福田康夫", "安倍晋三", "小泉純一郎", "森喜朗"];
+/*
+var i = 0;	//カウンタ
+while(i < members.length){
+    alert(members[i]);
+    i++;
+}
+*/
+
+                document.forms["form1"].elements["input1"].value = members.length;
+                document.getElementById('targetText').innerHTML = members.length;
+
+                for(var i=0; i < members.length; i++){
+                    alert(members[i]);
+                }
+            }
+            </script>
+            <form action="#" name="form1">
+                <p>
+                    <input type="text" size="30" name="input1">
+                    <input type="button" value="ボタン" onclick="bbb()">
+                </p>
+            </form>
+
+            <div id="targetText">ここの文字を動的に変えます</div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

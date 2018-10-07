@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+
+<html>
+    <header>
+    <title>フォーム（変更）</title>
+    </header>
+
+    <body>
+        <section>
+        <h1>text</h1>
+        placeholder<br>
+        <input type="text" placeholder="お名前" name="name"><br>
+        <input type="email" placeholder="メールアドレス" name="email"><br>
+        <input type="url" placeholder="ホームページ、ブログのURL" name="homeUrl"><br>
+        ※CSSでデザインも可能
+        </section>
+
+        <section>
+        <h1>checkbox</h1>
+        <input type="checkbox" id="cb">indeterminateのテスト<br>
+        <script>
+            var cb = document.getElementById("cb");
+            // indeterminateプロパティにtrueをセット
+            cb.indeterminate = true;
+        </script>
+            <section>
+            <h2>indeterminateプロパティを利用する</h2>
+            <pre><code>
+            if (checkbox.indeterminate) {
+            // チェックボックスの状態が不明の場合
+            ……
+            } else {
+                if (checkbox.checked) {
+                    // チェックされている場合
+            ……
+                } else {
+                    // チェックされていない場合
+            ……
+                }
+            }
+            </code></pre>
+            </section>
+
+        <section>
+        <h1>file</h1>
+        <input type=file name="files" multiple><br>
+
+        <input type=file name="imageFile" type="image/*"><br>
+
+        <input type=file name="imageFile" type="image/jpeg,image/png">
+        <script>
+            var fileInput = document.getElementById("imageFile");
+            // filesプロパティにアクセスし、ファイルの内容を読み取る
+            var files = fileInput.files;
+            for (var i = 0; i < files.length; i++) {
+                alert(file.name);
+            }
+        </script>
+        </section>
+
+        <section>
+        <h1>submit／image</h1>
+        <form method="POST">
+        お名前:<input name="name" required><br>
+        年齢:<input type="number" min="20" max="150" name="age" required><br>
+ 
+        <input type="submit" formaction="/addPerson" value="追加">
+        <input type="submit" formaction="/updatePerson" value="更新">
+        <input type="submit" formaction="/deletePerson" formnovalidate value="削除"><br>
+        <br>
+        formaction：送信するフォームのaction属性を上書き<br>
+        formenctype：送信するフォームのenctype属性を上書き<br>
+        formmethod：送信するフォームのmethod属性を上書き<br>
+        formnovalidate：送信するフォームのnovalidate属性を上書き（フォームのバリデーションについては後の連載を参照）<br>
+        formtarget：送信するフォームのtarget属性を上書き<br>
+        </form>
+
+        </section>
+
+
+<!--
+    大きな変更はない
+    radio
+    hidden
+    password
+    reset
+-->
+    </body>
+</html>
